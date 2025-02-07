@@ -1,11 +1,18 @@
 import { Inter as FontSans } from "next/font/google";
-import "./globals.css";
 import { cn } from "@/lib/utils";
+import "./globals.css";
+import { Metadata } from "next";
+
 
 const fontSans = FontSans({
   variable: "--font-sans",
   subsets: ["latin"],
 });
+
+export const metadata: Metadata = {
+  title: "LiveDocs",
+  description: 'Collaborative Editor'
+}
 
 export default function RootLayout({ children }: {children: React.ReactNode}) {
 
@@ -13,11 +20,11 @@ export default function RootLayout({ children }: {children: React.ReactNode}) {
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen font-sans antialiased",
           fontSans.variable
         )}
       >
-       DKJASJKDAS
+       {children}
       </body>
     </html>
   );
