@@ -22,6 +22,10 @@ export default function RootLayout({ children }: {children: React.ReactNode}) {
     <ClerkProvider
       appearance={{
         baseTheme: dark,
+        variables: { 
+          colorPrimary: "#3371FF",
+          fontSize: "16px",
+        },
       }}>
       <html lang="en" suppressHydrationWarning>
         <body
