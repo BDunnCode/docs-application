@@ -1,5 +1,6 @@
 import { currentUser } from "@clerk/nextjs/server";
 import { Liveblocks } from "@liveblocks/node";
+import { redirect } from "next/navigation";
 
 const liveblocks = new Liveblocks({
   secret: "sk_dev_kMmE4ejCOgjzDS7E4-gPbcXs5JDPa-yR0LWJYyKUTN7zPk0PSs2xd1Y2DARPJWZF",
@@ -10,8 +11,7 @@ export async function POST(request: Request) {
 
   if(!clerkUser) redirect('/sign-in');
 
-  const { id, firstName, lastName, emailAddresses, imageUrl } = 
-  clerkUser;
+  const { id, firstName, lastName, emailAddresses, imageUrl } = clerkUser;
 
   // Get the current user from your database
   const user = {
@@ -29,9 +29,9 @@ export async function POST(request: Request) {
   const { status, body } = await liveblocks.identifyUser(
     {
       userId: user.id,
-      groupIds, // Optional
+      groupIds: [],
     },
-    { userInfo: user.metadata },
+    { userInfo: user.info },
   );
 
   return new Response(body, { status });
