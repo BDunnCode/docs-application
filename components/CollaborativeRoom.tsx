@@ -44,6 +44,7 @@ const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType }: Col
       if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
         setEditing(false);
       }
+      updateDocument(roomId, documentTitle);
     }
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -51,7 +52,13 @@ const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType }: Col
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [])
+  }, [roomId, documentTitle])
+
+  useEffect(() => {
+    if(editing && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [editing])
 
   return (
    <RoomProvider id={roomId}>
