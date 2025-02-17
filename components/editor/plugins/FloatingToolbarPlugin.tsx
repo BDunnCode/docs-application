@@ -17,7 +17,7 @@ import {
   import * as React from 'react';
   import { createPortal } from 'react-dom';
   
-  export default function FloatingToolbar() {
+  export default function FloatingToolbarPlugin() {
     const [editor] = useLexicalComposerContext();
   
     const [range, setRange] = useState<Range | null>(null);
