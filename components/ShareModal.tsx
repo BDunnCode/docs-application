@@ -13,6 +13,8 @@ import { Button } from "./ui/button";
 import Image from "next/image";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import Collaborator from "./Collaborator";
+import UserTypeSelector from "./UserTypeSelector";
   
 
 
@@ -80,7 +82,14 @@ currentUserType} : ShareDocumentDialogProps) => {
         <div className="my-2 space-y-2">
           <ul className="flex flex-col">
             {collaborators.map((collaborator) => 
-              <Collaborator>
+              <Collaborator 
+                key={collaborator.id}
+                roomId={roomId}
+                creatorId={creatorId}
+                email={collaborator.email}
+                collaborator={collaborator}
+                user={user.info}
+              />
             )}
           </ul>
         </div>
