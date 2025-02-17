@@ -26,7 +26,7 @@ currentUserType} : ShareDocumentDialogProps) => {
   const [loading, setLoading] = useState(false);
 
   const [email, setEmail] = useState('');
-  const [userType, setUserType] = useState<UserType>('viewer')>;
+  const [userType, setUserType] = useState<UserType>('viewer');
 
   const shareDocumentHandler = async () => {}
 
